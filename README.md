@@ -11,7 +11,10 @@
 | 19/0089601  |João Lucas|
 
 ## Sobre
-O objetivo foi realizar 3 exercícios do juiz online [LeetCode](https://leetcode.com/), com os 3 sendo exercicios considerados dificeis pela plataforma. Os exercicios foram [Reachable Nodes In Subdivided Graph](https://leetcode.com/problems/reachable-nodes-in-subdivided-graph/), [Minimum Cost to Make at Least One Valid Path in a Grid](https://leetcode.com/problems/minimum-cost-to-make-at-least-one-valid-path-in-a-grid/) e [Find Critical and Pseudo-Critical Edges in Minimum Spanning Tree](https://leetcode.com/problems/find-critical-and-pseudo-critical-edges-in-minimum-spanning-tree/).
+O objetivo foi realizar 3 exercícios do juiz online [LeetCode](https://leetcode.com/), com os 3 sendo exercicios considerados dificeis pela plataforma. Os exercicios foram 
+* [Reachable Nodes In Subdivided Graph](https://leetcode.com/problems/reachable-nodes-in-subdivided-graph/)
+* [Find Critical and Pseudo-Critical Edges in Minimum Spanning Tree](https://leetcode.com/problems/find-critical-and-pseudo-critical-edges-in-minimum-spanning-tree/).
+* [Min Cost to Connect All Points](https://leetcode.com/problems/min-cost-to-connect-all-points/) 
 
 ## Video
 O video de apresentação do repositorio foi gravado e postado dentro do repositório.
@@ -22,9 +25,9 @@ O video de apresentação do repositorio foi gravado e postado dentro do reposit
 
 ### [Reachable Nodes In Subdivided Graph](https://leetcode.com/problems/reachable-nodes-in-subdivided-graph/)
 ![Alt text](/images/image.png)
-### [Minimum Cost to Make at Least One Valid Path in a Grid](https://leetcode.com/problems/minimum-cost-to-make-at-least-one-valid-path-in-a-grid/) 
-![Alt text](/images/image-1.png)
 ### [Find Critical and Pseudo-Critical Edges in Minimum Spanning Tree](https://leetcode.com/problems/find-critical-and-pseudo-critical-edges-in-minimum-spanning-tree/).
+![Alt text](/images/image-1.png)
+### [Min Cost to Connect All Points](https://leetcode.com/problems/min-cost-to-connect-all-points/description/) 
 ![Alt text](/images/image-2.png)
 
 ## Instalação
@@ -80,47 +83,6 @@ class Solution(object):
 ~~~
 
 Este código é uma implementação do algoritmo de Dijkstra para encontrar todos os nós alcançáveis em um gráfico. Ele começa do nó 0 e usa uma fila de prioridade para sempre escolher o nó com o maior número de movimentos restantes. Ele verifica todos os nós adjacentes a um nó visitado e os adiciona à fila de prioridade se eles não foram visitados antes e ainda há movimentos restantes após mover para eles. O resultado é a soma dos movimentos restantes em todos os nós visitados e a soma dos comprimentos das arestas que podem ser totalmente percorridas.
-
-### [Minimum Cost to Make at Least One Valid Path in a Grid](/Solucoes/1368.py)
-
-~~~Python
-class Solution(object):
-    def minCost(self, grid):
-        # Obtenha o número de linhas e colunas da grade
-        m, n = len(grid), len(grid[0])
-        
-        # Defina as direções das setas
-        arrow = [(0,1), (0,-1), (1,0), (-1,0)]            
-        
-        # Inicialize uma fila de deque com a posição inicial e o custo inicial
-        dp = collections.deque([(0, 0, 0)])
-        
-        # Inicialize um dicionário para armazenar os custos para cada posição
-        costs = {}
-        
-        # Enquanto a fila não estiver vazia
-        while dp:
-            # Obtenha a próxima posição e custo da fila
-            nx, ny, cost = dp.popleft()
-            
-            # Enquanto a posição atual estiver dentro da grade e ainda não tiver sido visitada
-            while 0 <= nx < m and 0 <= ny < n and (nx, ny) not in costs:
-                # Atualize o custo para a posição atual
-                costs[nx, ny] = cost
-                
-                # Adicione todas as posições adjacentes à fila com um custo adicional de 1
-                dp += [(nx+dx, ny+dy, cost+1) for dx, dy in arrow]
-                
-                # Obtenha a direção da seta para a posição atual
-                dx, dy = arrow[grid[nx][ny]-1]
-                
-                # Mova para a próxima posição na direção da seta
-                nx, ny = nx+dx, ny+dy
-                        
-        return costs[m-1,n-1]
-~~~
-
-Este código é uma implementação do algoritmo de busca em largura para encontrar o caminho de menor custo em uma grade. Ele começa na posição (0, 0) e usa uma fila de deque para visitar todas as posições possíveis na grade. Para cada posição visitada, ele verifica todas as posições adjacentes e as adiciona à fila com um custo adicional de 1. O custo para cada posição é armazenado em um dicionário. O resultado é o custo para a posição final (m-1, n-1).
 
 ### [Find Critical and Pseudo-Critical Edges in Minimum Spanning Tree](/Solucoes/1489.py)
 
@@ -199,4 +161,41 @@ class Solution:
 ~~~
 
 Este código é uma implementação do algoritmo de Kruskal para encontrar a árvore geradora mínima em um gráfico. Ele usa a estrutura de dados Union-Find para manter o controle das componentes conectadas. Ele primeiro ordena todas as arestas pelo peso e as adiciona à árvore geradora mínima. Em seguida, para cada aresta, ele verifica se removê-la resultará em um peso total maior ou em um gráfico desconectado. Se sim, a aresta é crítica. Se não, ele verifica se adicionar a aresta à árvore geradora mínima sem essa aresta resultará no mesmo peso total. Se sim, a aresta é pseudo-crítica.
+
+### [Min Cost to Connect All Points](/Solucoes/1584.py)
+
+~~~Python
+class Solution(object):
+    def minCostConnectPoints(self, points):
+        # Função auxiliar para calcular a distância de Manhattan entre dois pontos
+        manhattan = lambda p1, p2: abs(p1[0]-p2[0]) + abs(p1[1]-p2[1])
+
+        # Inicialização de variáveis
+        n = len(points)  # Número de pontos
+        c = collections.defaultdict(list)  # Dicionário para armazenar as distâncias entre os pontos
+
+        # Calcular todas as distâncias entre os pontos e armazená-las no dicionário
+        for i in range(n):
+            for j in range(i+1, n):
+                d = manhattan(points[i], points[j])
+                c[i].append((d, j))
+                c[j].append((d, i))
+
+        # Inicialização de variáveis para o algoritmo de Prim
+        cnt, ans, visited, heap = 1, 0, [0] * n, c[0]
+        visited[0] = 1
+        heapq.heapify(heap)
+
+        # Algoritmo de Prim para encontrar a árvore geradora mínima
+        while heap:
+            d, j = heapq.heappop(heap)
+            if not visited[j]:
+                visited[j], cnt, ans = 1, cnt+1, ans+d
+                for record in c[j]: heapq.heappush(heap, record)
+            if cnt >= n: break        
+
+        return ans  # Retornar o custo mínimo para conectar todos os pontos
+~~~
+
+Este código implementa o algoritmo de Prim para encontrar a árvore geradora mínima em um grafo completo. A ideia é começar com um ponto arbitrário (neste caso, o ponto 0), e então iterativamente adicionar o ponto mais próximo (ou seja, a aresta de menor peso) ao conjunto de pontos já visitados até que todos os pontos tenham sido visitados. A soma das distâncias (ou pesos das arestas) na árvore geradora mínima é o custo mínimo para conectar todos os pontos. A distância entre dois pontos é calculada usando a distância de Manhattan.
 
