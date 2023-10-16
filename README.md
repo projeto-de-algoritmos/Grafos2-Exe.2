@@ -11,7 +11,7 @@
 | 19/0089601  |João Lucas|
 
 ## Sobre
-O objetivo foi realizar 3 exercícios do juiz online [LeetCode](https://leetcode.com/), com os 3 sendo exercicios considerados dificeis pela plataforma. Os exercicios foram 
+O objetivo foi realizar 3 exercícios do juiz online [LeetCode](https://leetcode.com/), com 2 exercicios considerados dificeis e 1 mediano pela plataforma. Os exercicios foram 
 * [Reachable Nodes In Subdivided Graph](https://leetcode.com/problems/reachable-nodes-in-subdivided-graph/)
 * [Find Critical and Pseudo-Critical Edges in Minimum Spanning Tree](https://leetcode.com/problems/find-critical-and-pseudo-critical-edges-in-minimum-spanning-tree/).
 * [Min Cost to Connect All Points](https://leetcode.com/problems/min-cost-to-connect-all-points/) 
