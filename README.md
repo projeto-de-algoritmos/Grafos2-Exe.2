@@ -19,7 +19,11 @@ O objetivo foi realizar 3 exercícios do juiz online [LeetCode](https://leetcode
 ## Video
 O video de apresentação do repositorio foi gravado e postado dentro do repositório.
 
-[Video](/Video/video.mp4)
+[Video](/Video/video.zip)
+
+E tambem um acesso caso deseje ver em uma qualidade maior e menos acelerado
+
+[Video no YouTube](https://youtu.be/8lplLJQ3r3U)
 
 ## Screenshots
 
