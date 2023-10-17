@@ -25,6 +25,10 @@ E tambem um acesso caso deseje ver em uma qualidade maior e menos acelerado
 
 [Video no YouTube](https://youtu.be/8lplLJQ3r3U)
 
+Para baixar o video tambem basta acessar
+
+[Baixar video](https://drive.google.com/file/d/1m2wAfl5cBg5o0IPbJs4-2OVrG_W2GNV4/view?usp=sharing)
+
 ## Screenshots
 
 ### [Reachable Nodes In Subdivided Graph](https://leetcode.com/problems/reachable-nodes-in-subdivided-graph/)
