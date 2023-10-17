@@ -29,6 +29,8 @@ Para baixar o video tambem basta acessar
 
 [Baixar video](https://drive.google.com/file/d/1m2wAfl5cBg5o0IPbJs4-2OVrG_W2GNV4/view?usp=sharing)
 
+Recomendo assistir pelo Youtube ou baixar pelo google drive, pois a qualidade do video esta bem melhor, pois devido limitações do github o video do repositorio esta bem acelerado e com a qualidade baixa.
+
 ## Screenshots
 
 ### [Reachable Nodes In Subdivided Graph](https://leetcode.com/problems/reachable-nodes-in-subdivided-graph/)
